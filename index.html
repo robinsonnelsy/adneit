@@ -624,93 +624,97 @@ $( "#idimgpanelinicial" ).hover(function() {
         var sceneToRender2 = null;
         var createDefaultEngine2 = function() { return new BABYLON.Engine(canvas2, true, { preserveDrawingBuffer: true, stencil: true }); };
         var createScene2 = function (engine) {
+      
             var scene = new BABYLON.Scene(engine);
-        
-            // Camera
-            var camera = new BABYLON.ArcRotateCamera
-            ("Camera", 3 * Math.PI / 2, Math.PI / 4, 100,
-             new BABYLON.Vector3(0,-22,0), scene);
-            camera.attachControl(canvas2, true);
-            
-            // Light
-            var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
-        
-            // Skybox
-            var skybox = BABYLON.Mesh.CreateBox("skyBox", 5000.0, scene);
-            var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
-            skyboxMaterial.backFaceCulling = false;
-            skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("//www.babylonjs.com/assets/skybox/TropicalSunnyDay", scene);
-            skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
-            skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
-            skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
-            skyboxMaterial.disableLighting = true;
-            skybox.material = skyboxMaterial;
-        
-            // Water material
-            var waterMaterial = new BABYLON.WaterMaterial("waterMaterial", scene, new BABYLON.Vector2(512, 512));
-            waterMaterial.bumpTexture = new BABYLON.Texture
-            ("//www.babylonjs.com/assets/waterbump.png", scene);
-            waterMaterial.windForce = -17;
-            waterMaterial.waveHeight = 2;
-            waterMaterial.bumpHeight = 0.1;
-            waterMaterial.waveLength = 0.3;
-            waterMaterial.waveSpeed = 50.0;
-            waterMaterial.colorBlendFactor = 0;
-            waterMaterial.windDirection = new BABYLON.Vector2(1, 1);
-            waterMaterial.colorBlendFactor = 0;
-        
-            // Ground
-            var groundTexture = new BABYLON.Texture("./rc.jpg", scene);
-            groundTexture.vScale = groundTexture.uScale = 4.0;
-        
-            var groundMaterial = new BABYLON.StandardMaterial("groundMaterial", scene);
-            groundMaterial.diffuseTexture = groundTexture;
-        
-            var ground = BABYLON.Mesh.CreateGround("ground", 512, 512, 32, scene, false);
-            ground.position.y = -1;
-            ground.material = groundMaterial;
-        
-            // Water mesh
-            var waterMesh = BABYLON.Mesh.CreateGround("waterMesh", 512, 512, 32, scene, false);
-            waterMesh.material = waterMaterial;
-        
-            // Sphere
-            var sphereMaterial = new BABYLON.StandardMaterial("sphereMaterial", scene);
-            sphereMaterial.diffuseTexture = new BABYLON.Texture("//www.babylonjs.com/assets/wood.jpg", scene);
-        
-            var sphere = BABYLON.Mesh.CreateSphere("sphere", 32, 24, scene);
-            sphere.position.y = 33;
-            sphere.material = sphereMaterial;
-        
-            // Configure water material
-            waterMaterial.addToRenderList(ground);
-            waterMaterial.addToRenderList(skybox);
-            waterMaterial.addToRenderList(sphere);
-        BABYLON.SceneLoader.ImportMesh
-        ("","./","gionave.glb",scene,
-        function(ms,pt,an,op){
-       //     camera2.position.y=15;
-            ms[0].position.y=33;
-            ms[0].position.x=-8;
-            var scalaa=14;
-        ms[0].scaling=new BABYLON.Vector3(scalaa,scalaa,scalaa);
-        camera.setTarget(sphere.position);
 
-        sphere.visibility=false;
-        for(var i in ms){
-            waterMaterial.addToRenderList( ms[i]);
-        
-        }
-        
-       
-    document.getElementById("idblac").style.display="none";
-  
+// Camera
+var camera = new BABYLON.ArcRotateCamera("Camera", 3 * Math.PI / 2, Math.PI / 4, 260, BABYLON.Vector3.Zero(), scene);
+camera.attachControl(canvas2, true);
+
+// Light
+var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
+
+// Skybox
+/*     var skybox = BABYLON.Mesh.CreateBox("skyBox", 5000.0, scene);
+var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
+skyboxMaterial.backFaceCulling = false;
+skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("//www.babylonjs.com/assets/skybox/TropicalSunnyDay", scene);
+skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
+skyboxMaterial.diffuseColor = new BABYLON.Color3(0.73, 0, 0);
+skyboxMaterial.specularColor = new BABYLON.Color3(1, 0, 0);
+skyboxMaterial.disableLighting = true;
+skybox.material = skyboxMaterial; */
 
 
-        });
-        scene.createDefaultEnvironment();
-        
+
+// Water material
+var waterMaterial = new BABYLON.WaterMaterial("waterMaterial", scene, new BABYLON.Vector2(512, 512));
+waterMaterial.bumpTexture = new BABYLON.Texture("//www.babylonjs.com/assets/waterbump.png", scene);
+waterMaterial.windForce = -10;
+waterMaterial.waveHeight = 0.5;
+waterMaterial.bumpHeight = 0.1;
+waterMaterial.waveLength = 0.1;
+waterMaterial.waveSpeed = 50.0;
+waterMaterial.colorBlendFactor = 0;
+waterMaterial.windDirection = new BABYLON.Vector2(1, 1);
+waterMaterial.colorBlendFactor = 0;
+
+// Ground
+var groundTexture = new BABYLON.Texture("//www.babylonjs.com/assets/sand.jpg", scene);
+groundTexture.vScale = groundTexture.uScale = 4.0;
+
+var groundMaterial = new BABYLON.StandardMaterial("groundMaterial", scene);
+groundMaterial.diffuseTexture = groundTexture;
+
+var ground = BABYLON.Mesh.CreateGround("ground", 512, 512, 32, scene, false);
+ground.position.y = -1;
+ground.material = groundMaterial;
+
+// Water mesh
+var waterMesh = BABYLON.Mesh.CreateGround("waterMesh", 512, 512, 32, scene, false);
+waterMesh.material = waterMaterial;
+
+// Sphere
+var sphereMaterial = new BABYLON.StandardMaterial("sphereMaterial", scene);
+sphereMaterial.diffuseTexture = new BABYLON.Texture("//www.babylonjs.com/assets/wood.jpg", scene);
+
+var sphere = BABYLON.Mesh.CreateSphere("sphere", 32, 24, scene);
+sphere.position.y = 200;
+sphere.material = sphereMaterial;
+
+// Configure water material
+waterMaterial.addToRenderList(ground);
+// waterMaterial.addToRenderList(skybox);
+waterMaterial.addToRenderList(sphere);
+      scene.activeCamera.useAutoRotationBehavior = true;
+    
+    var gl = new BABYLON.GlowLayer("glow", scene, { mainTextureSamples: 2 });
+BABYLON.SceneLoader.ImportMesh("","https://noenadies.github.io/nn/","unsa.glb",scene,function(ms,pr,gan,an){
+camera.position.y=23;
+ms[0].position.y=22;
+camera.target=ms[0];
+
+var scalando=6;
+//ms[0].scaling=new BABYLON.Vector3(scalando,scalando,scalando);
+//sphere.scaling=new BABYLON.Vector3(scalando);
+//ms[0].scaling=new BABYLON.Vector3(scalando);
+for(var i in ms){
+   waterMaterial.addToRenderList(ms[i]);
+
+}
+});
+var helperw = scene.createDefaultEnvironment();
+    helperw.setMainColor(new BABYLON.Color3(0.02, 0.02, 0.02));
+
+    scene.environmentIntensity=0.4;
+
+    scene.ambientColor = new BABYLON.Color3(0, 0, 0);
+
+
+
+            document.getElementById("idblac").style.display="none";
             return scene;
+            
         };
 
         volveracrear()
@@ -749,7 +753,7 @@ try {
     engine2 = createDefaultEngine2();
 }
         if (!engine2) {throw 'engine should not be null.';}
-        scene2 = createScene2();
+        scene2 = createScene2(  engine2);
         sceneToRender2 = scene2
 
         engine2.runRenderLoop(function () {
