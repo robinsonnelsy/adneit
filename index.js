@@ -292,13 +292,14 @@ setTimeout(function(){
 
             var godrays1 = new BABYLON.VolumetricLightScatteringPostProcess('godrays1', 1.0, currentScene.activeCamera, null, 100, BABYLON.Texture.BILINEAR_SAMPLINGMODE, engine, false);
         
-        	// By default it uses a billboard to render the sun, just apply the desired texture
+        	// By default innt usasdfes a billboard to render the sun, just apply the desired texture
         	// position and scale
         	godrays1.mesh.material.diffuseTexture = new BABYLON.Texture('./sun.png', currentScene, true, false, BABYLON.Texture.BILINEAR_SAMPLINGMODE);
         	godrays1.mesh.material.diffuseTexture.hasAlpha = true;
         	godrays1.mesh.position = new BABYLON.Vector3(-150, 150, 150);
         	godrays1.mesh.scaling = new BABYLON.Vector3(350, 350, 350);
-        
+          
+            var gl = new BABYLON.GlowLayer("glow", scene, { mainTextureSamples: 2 });
         	//light.position = godrays1.mesh.position;
             var hdrTexture = new BABYLON.CubeTexture("./SpecularHDR.dds", scene);
             currentScene.createDefaultSkybox(hdrTexture, true, 500);
