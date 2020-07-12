@@ -1950,7 +1950,7 @@
                         value: e.materials.length.toString()
                     }), l.createElement(ve, {
                         label: "Total textures",
-                        value: e.textures.length.toString()
+                        value:"0";// e.textures.length.toString()
                     })), l.createElement(ye, {
                         globalState: this.props.globalState,
                         title: "FRAME STEPS DURATION"
