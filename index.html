@@ -625,7 +625,7 @@ $( "#idimgpanelinicial" ).hover(function() {
             var scene = new BABYLON.Scene(engine);
 
 // Camera
-var camera = new BABYLON.ArcRotateCamera("Camera", 3 * Math.PI / 2, Math.PI / 4, 260, BABYLON.Vector3.Zero(), scene);
+var camera = new BABYLON.ArcRotateCamera("Camera", 3 * Math.PI / 2, Math.PI / 4, 50, BABYLON.Vector3.Zero(), scene);
 camera.attachControl(canvas2, true);
 
 // Light
@@ -681,9 +681,9 @@ waterMaterial.addToRenderList(ground);
       scene.activeCamera.useAutoRotationBehavior = true;
     
     var gl = new BABYLON.GlowLayer("glow", scene, { mainTextureSamples: 2 });
-BABYLON.SceneLoader.ImportMesh("","./","batalla.glb",scene,function(ms,pr,gan,an){
-camera.position.y=23;
-ms[0].position.y=22;
+BABYLON.SceneLoader.ImportMesh("","./","objscene.glb",scene,function(ms,pr,gan,an){
+camera.position.y=23/2;
+ms[0].position.y=22/2;
 camera.target=ms[0];
 
 var scalando=6;
