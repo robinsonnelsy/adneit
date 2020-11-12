@@ -556,6 +556,120 @@ color: #ffffff;
 
 font-size: 10px;
 }
+
+
+#menucodigo{
+display: none;
+    position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #0000005e;
+  left: 0%;
+  top: 0%;
+ z-index: 33333;
+}
+#idmeodi{
+    position: absolute;
+  width: 150px;
+  height: 270px;
+  background: #47bbe91c;
+  left: 50%;
+  top: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: space-around;
+    border: 1px solidrgba(32, 32, 32, 0.308)4;
+border-radius: 40px;
+}
+.csinputuclass{
+width: 100%;
+height: 33px;
+    padding: 0px;
+     font-size: 16px;
+     border-width: 3px;
+     border-color: #CCCCCC;
+     background-color: #FFFFFF;
+     color: #000000;
+     border-style: solid;
+     border-radius: 11px;
+     box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+     text-shadow: 0px 0px 5px rgba(66,66,66,.75);
+}
+
+#idbtmencodigo{
+    width: 100%;
+height: 70px;
+    display: flex;
+	flex-direction: row-reverse;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: space-around;
+}
+#idbtmenucodigo1{
+    width: 44px;
+    height: 44px;
+    background-color: #0b8fa7;
+   
+    border-radius: 50% ;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+    color:#575656 ;
+
+}
+#idbtmenucodigo1:hover{
+
+background-color: #40fff5;
+color:#ffffff ;
+}
+
+#idbtmenucodigo2{
+    width: 44px;
+    height: 44px;
+    background-color: #156b7a;
+    border-radius: 50% ;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+    color:#575656 ;
+}
+#idbtmenucodigo2:hover{
+    color:#dadada ;
+    background-color: #0cdd63;
+
+}
+
+#idimgcodigomenu{
+    position: absolute;
+    left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  background: #0000005e;
+  z-index: 0;
+}
+.clmenuodigos{
+
+    width: 100%;
+    height: 80px;
+    
+}
     </style>
 </head>
 
@@ -588,7 +702,18 @@ font-size: 10px;
 </div>
         <canvas id="renderCanvas2"></canvas>
 
+<div id="menucodigo">
+    <img id="idimgcodigomenu"  src="https://i.pinimg.com/originals/54/bc/d3/54bcd37dd9353265c6bfa626dda72116.gif" alt="">
+    <div id="idmeodi">
+<div class="clmenuodigos"></div>
+        <input id="input2p" placeholder="nombre" class="csinputuclass" type="text">
+        <div class="clmenuodigos"></div>
+        <input id="input1p" placeholder="clave"  class="csinputuclass" type="password">
+        <div class="clmenuodigos"></div>
+        <div id="idbtmencodigo">         <button id="idbtmenucodigo1">OK</button> <button  id="idbtmenucodigo2">X</button></div>
 
+    </div>
+</div>
     </div>
 
 
@@ -965,6 +1090,36 @@ function detenerscene2(){
 
         
     </div>
+
+
+    <script>
+var boolg=true;
+$(document).keydown(function (e) { 
+   
+    if(e.key=="t"){
+    
+        if(boolg){
+            document.getElementById("menucodigo").style.display="block";
+        }
+        else{
+            document.getElementById("menucodigo").style.display="none";
+        }
+        boolg=!boolg;
+    }
+});
+
+$("#idbtmenucodigo1").click(function (e) { 
+
+    var valorinput1p=document.getElementById("input1p").value;
+    var valorinput1name=document.getElementById("input2p").value;
+if(valorinput1p=="colombia"){
+window.location="https://stephaneginier.com/sculptgl/"
+
+}
+    
+});
+
+    </script>
     </body>
     
     </html>
