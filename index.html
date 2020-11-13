@@ -670,6 +670,33 @@ color:#ffffff ;
     height: 80px;
     
 }
+
+#idselecionaherramienta{
+   
+    position: absolute;
+    left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  background: #0000005e;
+  z-index: 1000;
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
+    display: none;
+}
+
+.clherra{
+
+    width: 120px;
+    height: 120px;
+  background-color: #013f8683;
+  margin: 30px;
+  text-align: center;
+}
     </style>
 </head>
 
@@ -701,7 +728,20 @@ color:#ffffff ;
 
 </div>
         <canvas id="renderCanvas2"></canvas>
+<div  id="idselecionaherramienta">
 
+    <div onclick="fiddivh2();"  class="clherra" id="iddivh1">
+
+   escultura
+     
+     </div>
+     <div onclick="fiddivh1();" class="clherra"  id="iddivh1">
+
+     pintado texture
+     
+     </div>
+
+</div>
 <div id="menucodigo">
     <img id="idimgcodigomenu"  src="https://i.pinimg.com/originals/54/bc/d3/54bcd37dd9353265c6bfa626dda72116.gif" alt="">
     <div id="idmeodi">
@@ -1113,7 +1153,14 @@ $("#idbtmenucodigo1").click(function (e) {
     var valorinput1p=document.getElementById("input1p").value;
     var valorinput1name=document.getElementById("input2p").value;
 if(valorinput1p=="colombia"){
-window.location="https://stephaneginier.com/sculptgl/"
+//window.location="https://stephaneginier.com/sculptgl/"
+//https://robinsonnelsy.github.io/mipaint/. 
+
+document.getElementById("menucodigo").style.display="none";
+    boolg=!boolg;
+
+document.getElementById("idselecionaherramienta").style.display="flex";
+
 
 }
     
@@ -1123,6 +1170,16 @@ $("#idbtmenucodigo2").click(function (e) {
     document.getElementById("menucodigo").style.display="none";
     boolg=!boolg;
 });
+
+
+
+function fiddivh1(){
+    window.location="https://robinsonnelsy.github.io/mipaint/"
+}
+
+function fiddivh2(){
+    window.location="https://stephaneginier.com/sculptgl/"
+}
     </script>
     </body>
     
